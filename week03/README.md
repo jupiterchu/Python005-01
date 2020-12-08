@@ -169,16 +169,22 @@ class Record_tabl(Base):
 
   ```python
   def deal(one, other, deal, session):
+      # 获取转账者 ID
       one_id = session.query(User_table.uid).filter(User_table.name == one).one()[0]
+      # 被转账者 ID
       other_id = session.query(User_table.uid).filter(User_table.name == other).one()[0]
+      # 转账者账户余额
       one_mon = session.query(Asset_table.asset).filter(Asset_table.uid==one_id, Asset_table.asset>deal).one()[0]
+      # 被转账者账户余额
       other_mon = session.query(Asset_table.asset).filter(Asset_table.uid==other_id).one()[0]
   
       one_mon -= deal
       other_mon += deal
+      # 更新双方余额
       session.query(Asset_table.asset).filter(Asset_table.uid==one_id).update({Asset_table.asset: one_mon})
       session.query(Asset_table.asset).filter(Asset_table.uid == other_id).update({Asset_table.asset: other_mon})
-  
+      
+      # 添加账单
       record = Record_tabl(one_id=one_id,
                            other_id=other_id,
                            create_date=datetime.now(),
