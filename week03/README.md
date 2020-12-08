@@ -10,7 +10,7 @@
 
   ```sql
   CREATE USER 'testroot'@'%' IDENTIFIED BY 'testpass';
-  GRANT ALL PRIVILEGES ON *.* TO 'root' @'%';
+  GRANT ALL PRIVILEGES ON testdb.* TO 'root' @'%';
   ```
 
 ### 2. 使用 sqlalchemy ORM 方式创建如下表，使用 PyMySQL 对该表写入 3 条测试数据，并读取:
