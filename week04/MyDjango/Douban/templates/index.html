@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>主页</title>
+</head>
+    <script type="text/javascript">
+        function test()
+        {
+            var h = window.location.host;
+            var value = document.getElementById("message").value;
+            window.open(h+'/search/'+value);
+        }
+    </script>
+    <body>
+        <div class="containter">
+            <div class="row">
+                <div class="md-col-12">
+                    <label for="message"></label><input type="text" name="message" id="message" placeholder="请输入" />
+                <button onclick="test()">搜索</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
