@@ -70,7 +70,7 @@ def send_times(times):
                     func(telephone_number, content[con_len >> 2:])
 
                 elif dump(telephone_number, times, True) and \ # 尝试倾倒两次
-                        dump(telephone_number, times, True):
+                        dump(telephone_number, times - 1, True):
                     
                     func(telephone_number, content[:con_len >> 2])
                     func(telephone_number, content[con_len >> 2:])
