@@ -69,8 +69,8 @@ def send_times(times):
                     func(telephone_number, content[:con_len >> 2])
                     func(telephone_number, content[con_len >> 2:])
 
-                elif dump(telephone_number, times, True) and \ # 尝试倾倒两次
-                        dump(telephone_number, times - 1, True):
+                elif dump(telephone_number, times) and \ # 尝试倾倒两次
+                        dump(telephone_number, times - 1):
                     
                     func(telephone_number, content[:con_len >> 2])
                     func(telephone_number, content[con_len >> 2:])
@@ -80,7 +80,7 @@ def send_times(times):
     return decorate
 
 
-def dump(telephone_number, limit,  double=False, wait=5):
+def dump(telephone_number, limit, wait=5):
     """尝试发送，并维护数组长度节约内存"""
     head = r.lrange(telephone_number, -limit, -limit) # 队头发送时间
     head = float(last[0].decode())
