@@ -30,7 +30,7 @@ def counter(hotspot_id: int):
     return counter_number
 ```
 
-![image-20201221233606343](C:\Users\Jove\PycharmProjects\geek_assignment\Python005-01\week05\图片\1.png)
+![image-20201221233606343](https://github.com/jupiterchu/Python005-01/blob/main/week05/%E5%9B%BE%E7%89%87/1.png)
 
 **作业二：**在使用短信群发业务时，公司的短信接口限制接收短信的手机号，每分钟最多发送五次，请基于 Python 和 redis 实现如下的短信发送接口：
 已知有如下函数：
