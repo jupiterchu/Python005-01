@@ -66,8 +66,9 @@ if __name__ == '__main__':
 
     try:
         deal('张三','李四', 100, session)
+        session.commit()
     except Exception as e:
         print(e)
         session.rollback()
     finally:
-        session.commit()
+        session.close()

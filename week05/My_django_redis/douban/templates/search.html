@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影搜索结果</title>
+</head>
+
+<body>
+<table>
+{% for i in data %}
+    <tr>
+        <td id="title">{{ i.title }}</td>
+        <td id="year">{{ i.year }}</td>
+        <td id="mid" >{{ i.id }}</td>
+        <td ><a href="{%  url 'detail' i.id i.title %}" ><button onclick="f()">进入详情页</button></a></td>
+    </tr>
+{% endfor %}
+        <script>
+            function f() {
+            var h = window.location.host;
+            var value = document.getElementById("search").value;
+            window.location.href(h+'/search/'+value);
+            }
+        </script>
+</table>
+</body>
+</html>
