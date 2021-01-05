@@ -18,13 +18,37 @@ from abc import ABCMeta, abstractmethod
 
 
 class Zoo(object):
+    animals = {}
+
     def __init__(self, name):
         self.name = name
 
     def add_animal(self, animal):
-        """将实例化的对象直接添加到动物园实例的属性字典中"""
+        """同一个种动物不可以重复添加
+        例如: 添加了 Cat, 则不可再添加
+        """
         if not animal.__class__.__name__ in self.__dict__:
             self.__dict__[animal.__class__.__name__] = animal
+        print("同一个种动物不可以重复添加")
+
+    def add_animal2(self, animal):
+        """同一只动物不可重复添加
+        例如: 添加了"大花猫1", 则不可再添加
+        """
+        if self.animals.get(animal.name):
+            print(f"已经有{animal.name}了")
+        self.animals[animal.name] = animal
+
+    def get_animal(self, name):
+        """
+        获取一个添加过的动物实例
+        :param name:
+        :return:
+        """
+        animal = self.animals.get(name)
+        if animal:
+            return animal
+        print(f"没有{name}")
 
 class Animal(metaclass=ABCMeta):
     """"""
@@ -111,5 +135,9 @@ if __name__ == '__main__':
     z.add_animal(cat1)
     # 动物园是否有猫这种动物
     have_cat = hasattr(z, 'Cat')
-    print(cat1.sound)
+    zoo_cat = getattr(z, 'Cat')
+    print(zoo_cat.name)
     print(have_cat)
+
+    z.add_animal2(cat1)
+    animal = z.get_animal("大花猫 1")
